@@ -1,4 +1,4 @@
-package com.example.retailapp.di
+package com.example.retailapp.core.di
 
 import android.app.Application
 import android.content.Context

@@ -1,4 +1,4 @@
-package com.example.retailapp.ui.base
+package com.example.retailapp.core.base
 
 import android.content.Context
 import android.os.Bundle
@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.retailapp.RetailApp
-import com.example.retailapp.ui.base.BaseActivity
+import com.example.retailapp.app.RetailApp
 import com.github.terrakok.cicerone.Screen
 import javax.inject.Inject
 

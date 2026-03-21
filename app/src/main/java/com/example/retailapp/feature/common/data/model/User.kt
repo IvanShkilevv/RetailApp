@@ -1,4 +1,4 @@
-package com.example.retailapp.data.model
+package com.example.retailapp.feature.common.data.model
 
 import com.google.gson.annotations.SerializedName
 

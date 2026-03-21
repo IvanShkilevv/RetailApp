@@ -1,4 +1,4 @@
-package com.example.retailapp.di
+package com.example.retailapp.core.di
 
 import com.github.terrakok.cicerone.Cicerone
 import com.github.terrakok.cicerone.NavigatorHolder

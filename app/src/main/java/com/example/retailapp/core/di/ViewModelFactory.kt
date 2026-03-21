@@ -1,9 +1,8 @@
-package com.example.retailapp.di
+package com.example.retailapp.core.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.retailapp.ui.user_details.UserDetailsViewModel
-import com.example.retailapp.ui.users.UsersViewModel
+import com.example.retailapp.feature.products.ui.ProductsViewModel
 
 import dagger.Binds
 import dagger.MapKey
@@ -40,13 +39,14 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(UsersViewModel::class)
-    internal abstract fun productsViewModel(viewModel: UsersViewModel): ViewModel
+    @ViewModelKey(ProductsViewModel::class)
+    internal abstract fun productsViewModel(viewModel: ProductsViewModel): ViewModel
 
-    @Binds
-    @IntoMap
-    @ViewModelKey(UserDetailsViewModel::class)
-    internal abstract fun productDetailsViewModel(viewModel: UserDetailsViewModel): ViewModel
+// TODO: uncomment
+//    @Binds
+//    @IntoMap
+//    @ViewModelKey(UserDetailsViewModel::class)
+//    internal abstract fun productDetailsViewModel(viewModel: UserDetailsViewModel): ViewModel
 
     // TODO: uncomment
 //    @Binds

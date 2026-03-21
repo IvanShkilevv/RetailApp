@@ -1,12 +1,12 @@
-package com.example.retailapp
+package com.example.retailapp.app
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
-import com.example.retailapp.di.AppComponent
-import com.example.retailapp.di.AppModule
-import com.example.retailapp.di.DaggerAppComponent
+import com.example.retailapp.core.di.AppComponent
+import com.example.retailapp.core.di.AppModule
+import com.example.retailapp.core.di.DaggerAppComponent
 
 class RetailApp : Application(), Application.ActivityLifecycleCallbacks {
 

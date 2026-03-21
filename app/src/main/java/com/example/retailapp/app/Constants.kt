@@ -1,4 +1,4 @@
-package com.example.retailapp
+package com.example.retailapp.app
 
 object Constants {
     const val PAGE_SIZE = 20

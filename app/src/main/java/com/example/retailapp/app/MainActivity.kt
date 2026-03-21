@@ -1,9 +1,9 @@
-package com.example.retailapp.ui.main
+package com.example.retailapp.app
 
 import android.os.Bundle
 import com.example.retailapp.R
-import com.example.retailapp.navigation.Screens
-import com.example.retailapp.ui.base.BaseActivity
+import com.example.retailapp.feature.common.navigation.Screens
+import com.example.retailapp.core.base.BaseActivity
 
 class MainActivity : BaseActivity() {
 

@@ -1,10 +1,10 @@
-package com.example.retailapp.ui.users
+package com.example.retailapp.feature.products.ui
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
-import com.example.retailapp.data.model.User
-import com.example.retailapp.domain.UsersInteractor
-import com.example.retailapp.ui.base.BaseViewModel
+import com.example.retailapp.feature.common.data.model.User
+import com.example.retailapp.feature.common.domain.UsersInteractor
+import com.example.retailapp.core.base.BaseViewModel
 import com.kevinnzou.compose.core.paginglist.easyPager
 import com.kevinnzou.compose.core.paginglist.pagerconfig.PagingListWrapper
 import kotlinx.coroutines.CancellationException
@@ -16,8 +16,7 @@ import kotlinx.coroutines.launch
 import java.util.NoSuchElementException
 import javax.inject.Inject
 
-// NOTICE: 403 exception may happen after several requests. Try other device then
-class UsersViewModel @Inject constructor(
+class ProductsViewModel @Inject constructor(
     private val usersInteractor: UsersInteractor
 ) : BaseViewModel() {
 
@@ -58,7 +57,8 @@ class UsersViewModel @Inject constructor(
                 usersData.value = items
                 uiState.value = UsersUiState.DATA
             } catch (error: Throwable) {
-                if (error is CancellationException) throw error else uiState.value = UsersUiState.ERROR
+                if (error is CancellationException) throw error else uiState.value =
+                    UsersUiState.ERROR
             }
         }
 

@@ -1,10 +1,10 @@
-package com.example.retailapp.di
+package com.example.retailapp.core.di
 
-import com.example.retailapp.Constants.BASE_API_URL
-import com.example.retailapp.Constants.TIMEOUT_SECONDS_CONNECT
-import com.example.retailapp.Constants.TIMEOUT_SECONDS_READ
-import com.example.retailapp.Constants.TIMEOUT_SECONDS_WRITE
-import com.example.retailapp.data.source.UsersService
+import com.example.retailapp.app.Constants.BASE_API_URL
+import com.example.retailapp.app.Constants.TIMEOUT_SECONDS_CONNECT
+import com.example.retailapp.app.Constants.TIMEOUT_SECONDS_READ
+import com.example.retailapp.app.Constants.TIMEOUT_SECONDS_WRITE
+import com.example.retailapp.feature.common.data.source.UsersService
 import com.google.gson.*
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader

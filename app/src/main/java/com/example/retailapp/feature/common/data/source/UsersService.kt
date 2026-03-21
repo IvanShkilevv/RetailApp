@@ -1,6 +1,6 @@
-package com.example.retailapp.data.source
+package com.example.retailapp.feature.common.data.source
 
-import com.example.retailapp.data.model.User
+import com.example.retailapp.feature.common.data.model.User
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

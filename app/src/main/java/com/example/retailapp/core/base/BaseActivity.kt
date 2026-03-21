@@ -1,9 +1,9 @@
-package com.example.retailapp.ui.base
+package com.example.retailapp.core.base
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.retailapp.RetailApp
+import com.example.retailapp.app.RetailApp
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator

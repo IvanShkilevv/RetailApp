@@ -1,7 +1,7 @@
-package com.example.retailapp.di
+package com.example.retailapp.core.di
 
-import com.example.retailapp.ui.base.BaseActivity
-import com.example.retailapp.ui.base.BaseFragment
+import com.example.retailapp.core.base.BaseActivity
+import com.example.retailapp.core.base.BaseFragment
 import dagger.Component
 import javax.inject.Singleton
 
