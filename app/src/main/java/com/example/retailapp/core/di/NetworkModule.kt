@@ -4,7 +4,7 @@ import com.example.retailapp.app.Constants.BASE_API_URL
 import com.example.retailapp.app.Constants.TIMEOUT_SECONDS_CONNECT
 import com.example.retailapp.app.Constants.TIMEOUT_SECONDS_READ
 import com.example.retailapp.app.Constants.TIMEOUT_SECONDS_WRITE
-import com.example.retailapp.feature.common.data.source.UsersService
+import com.example.retailapp.feature.common.data.ProductsService
 import com.google.gson.*
 import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
@@ -93,8 +93,8 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun providesProductsService(@Named("retrofit") retrofit: Retrofit): UsersService {
-        return retrofit.create(UsersService::class.java)
+    fun providesProductsService(@Named("retrofit") retrofit: Retrofit): ProductsService {
+        return retrofit.create(ProductsService::class.java)
     }
 
 }

@@ -2,8 +2,8 @@ package com.example.retailapp.feature.products.ui
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
-import com.example.retailapp.feature.common.data.model.User
-import com.example.retailapp.feature.common.domain.UsersInteractor
+import com.example.retailapp.feature.common.data.ProductDto
+import com.example.retailapp.feature.common.domain.ProductsRepository
 import com.example.retailapp.core.base.BaseViewModel
 import com.kevinnzou.compose.core.paginglist.easyPager
 import com.kevinnzou.compose.core.paginglist.pagerconfig.PagingListWrapper
@@ -17,7 +17,7 @@ import java.util.NoSuchElementException
 import javax.inject.Inject
 
 class ProductsViewModel @Inject constructor(
-    private val usersInteractor: UsersInteractor
+    private val productsRepository: ProductsRepository
 ) : BaseViewModel() {
 
     val pager = easyPager {
@@ -25,15 +25,15 @@ class ProductsViewModel @Inject constructor(
     }
 
     val uiState = mutableStateOf(UsersUiState.LOADING)
-    private val usersData = MutableStateFlow<List<User>>(emptyList())
+    private val usersData = MutableStateFlow<List<ProductDto>>(emptyList())
 
     private val defaultPageSinceID = 0
 
-    fun refreshUsers(): Deferred<List<User>> {
+    fun refreshUsers(): Deferred<List<ProductDto>> {
         return loadUsers(defaultPageSinceID)
     }
 
-    private suspend fun loadDataPage(): PagingListWrapper<User> {
+    private suspend fun loadDataPage(): PagingListWrapper<ProductDto> {
         val pageSinceID = try {
             usersData.value.last().id
         } catch (e: NoSuchElementException) {
@@ -44,11 +44,11 @@ class ProductsViewModel @Inject constructor(
         return PagingListWrapper(data, true)
     }
 
-    private fun loadUsers(sinceID: Int): Deferred<List<User>> {
+    private fun loadUsers(sinceID: Int): Deferred<List<ProductDto>> {
         val deferred = viewModelScope.async {
 //            delay added for a better testing PullToRefresh and ProgressIndicator
             delay(1000)
-            usersInteractor.loadUsersPage(sinceID)
+            productsRepository.loadUsersPage(sinceID)
         }
 
         viewModelScope.launch {

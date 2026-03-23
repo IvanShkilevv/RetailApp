@@ -5,9 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.retailapp.core.base.BaseFragment
-import com.example.retailapp.feature.common.data.model.User
+import com.example.retailapp.feature.common.data.ProductDto
 import com.example.retailapp.feature.common.navigation.Screens
 
+// TODO: 1) model, api, domain
+// TODO: 2) init Room
+// TODO: 3) db, favourites
+// TODO: 4) products
 class ProductsFragment : BaseFragment() {
 
     private lateinit var viewModel: ProductsViewModel
@@ -29,8 +33,8 @@ class ProductsFragment : BaseFragment() {
         }
     }
 
-    private fun navigateToProductDetails(user: User) {
-        navigateTo(Screens.productDetails(user.login))
+    private fun navigateToProductDetails(product: ProductDto) {
+        navigateTo(Screens.productDetails(product.login))
     }
 }
 
