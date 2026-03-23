@@ -1,10 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+100% — FF
+95% — F2
+90% — E6
+85% — D9
+80% — CC
+75% — BF
+70% — B3
+65% — A6
+60% — 99
+55% — 8C
+50% — 80
+45% — 73
+40% — 66
+35% — 59
+30% — 4D
+25% — 40
+20% — 33
+15% — 26
+10% — 1A
+5% — 0D
+0% — 00
+-->
+<!--todo clear unused-->
 <resources>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
+    <color name="purple_light_two">#D0A2F2</color>
+    <color name="purple_light_three">#C199E0</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+
+    <color name="transparent_black">#331C082A</color>
+    <color name="bottom_fogging">#6604040F</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="main_black">#1C082A</color>
+    <color name="purple">#B381D9</color>
+    <color name="dark_purple">#A373C8</color>
+    <color name="dark_purple_two">#583870</color>
+    <color name="light_grey">#F5F5FA</color>
+    <color name="light_grey_two">#AEAEBD</color>
+    <color name="light_grey_three">#BCBCCC</color>
+    <color name="grey">#858597</color>
+    <color name="grey_two">#9B93A4</color>
+    <color name="active_wrong">#FD89AE</color>
+    <color name="active_wrong_10">#1AFD89AE</color>
+    <color name="light">#D4D4E5</color>
+    <color name="sparkling">#B5C6FF</color>
+    <color name="pink">#FFE7EF</color>
+    <color name="dark_pink">#FF99BA</color>
+    <color name="desert">#D2FFF1</color>
+    <color name="light_purple">#F4E5FF</color>
+    <color name="light_purple_two">#C19AE0</color>
+    <color name="light_green">#E7FFEC</color>
+    <color name="light_green_two">#D3F7FF</color>
+    <color name="light_green_three">#95F8BD</color>
+    <color name="light_green_four">#D4FFF2</color>
+    <color name="main_black_50">#801C082A</color>
+    <color name="green">#83C6A6</color>
+    <color name="blue">#B2C3FF</color>
+    <color name="yellow">#FDE17C</color>
+    <color name="yellow_light">#FDFFAE</color>
+    <color name="yellow_light_two">#FDF097</color>
+
+    <color name="transparent_white">#CCFFFFFF</color>
+    <color name="lines_divider_grey">#E2E2F0</color>
+    <color name="black_50">#80000000</color>
+
 </resources>
