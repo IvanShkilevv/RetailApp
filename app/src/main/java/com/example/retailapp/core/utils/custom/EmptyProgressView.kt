@@ -10,7 +10,7 @@ import androidx.constraintlayout.widget.Group
 import androidx.core.view.isVisible
 import com.example.retailapp.R
 
-class SearchProgressView: FrameLayout {
+class EmptyProgressView: FrameLayout {
 
     private lateinit var message: TextView
     private lateinit var secondMessage: TextView
@@ -74,5 +74,9 @@ class SearchProgressView: FrameLayout {
         } else {
             visibility = GONE
         }
+    }
+
+    fun hide() {
+        visibility = GONE
     }
 }

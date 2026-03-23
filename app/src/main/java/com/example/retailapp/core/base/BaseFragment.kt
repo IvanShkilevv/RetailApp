@@ -1,10 +1,15 @@
 package com.example.retailapp.core.base
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorRes
+import androidx.annotation.DimenRes
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.retailapp.app.RetailApp
@@ -37,6 +42,15 @@ abstract class BaseFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         return getRootView(inflater = inflater, container = container)
+    }
+
+
+    protected fun getDimen(@DimenRes dimenRes: Int): Int {
+        return resources.getDimensionPixelOffset(dimenRes)
+    }
+
+    protected fun getDrawable(@DrawableRes drawableRes: Int): Drawable? {
+        return ContextCompat.getDrawable(requireContext(), drawableRes)
     }
 
 }

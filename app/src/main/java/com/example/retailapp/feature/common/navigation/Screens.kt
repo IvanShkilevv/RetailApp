@@ -9,7 +9,8 @@ object Screens {
         ProductsFragment.newInstance()
     }
 
-    // TODO: uncomment
+
+//        // TODO: uncomment
 //    fun productDetails(name: String?) = FragmentScreen {
 //        UserDetailsFragment.newInstance(name)
 //    }
