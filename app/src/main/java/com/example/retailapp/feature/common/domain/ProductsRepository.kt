@@ -3,56 +3,48 @@ package com.example.retailapp.feature.common.domain
 import com.example.retailapp.app.Constants.PAGE_SIZE
 import com.example.retailapp.feature.common.data.ProductDto
 import com.example.retailapp.feature.common.data.ProductsService
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import com.example.retailapp.feature.common.data.cache.FavouriteProductEntity
+import com.example.retailapp.feature.common.data.cache.FavouriteProductsDAO
+import com.example.retailapp.feature.common.data.cache.toDomain
+import com.example.retailapp.feature.common.data.cache.toEntity
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class ProductsRepository @Inject constructor(
-    private val productsService: ProductsService
+    private val productsService: ProductsService,
+    private val favouriteProductsDAO: FavouriteProductsDAO
 ) {
 
     suspend fun getProductsPage(skip: Int): List<Product> =
-        withContext(Dispatchers.IO) {
             productsService
                 .getProducts(skip = skip, limit = PAGE_SIZE)
                 .map(ProductDto::toDomain)
+
+
+    suspend fun getProductDetails(id: Int): Product {
+        val product = productsService.getProductDetails(id = id).toDomain()
+        val isFavourite = favouriteProductsDAO.isFavourite(product.id)
+
+        return product.copy(isFavourite = isFavourite)
+    }
+
+    fun getFavouriteProducts(): Flow<List<Product>> =
+        favouriteProductsDAO.getAll().map {
+            list -> list.map(FavouriteProductEntity::toDomain)
         }
 
+    suspend fun isFavourite(productId: String): Boolean =
+        favouriteProductsDAO.isFavourite(id = productId)
 
-    suspend fun getProductDetails(id: Int): Product =
-        withContext(Dispatchers.IO) {
-            productsService
-                .getProductDetails(id = id)
-                .toDomain()
+    suspend fun toggleFavourite(product: Product) {
+        val favourite = favouriteProductsDAO.isFavourite(product.id)
+
+        if (favourite) {
+            favouriteProductsDAO.deleteItem(id = product.id)
         }
-
-//    suspend fun toggleFavourite(product: Product) {
-//        if (product.isFavourite) clearFavourite(product)
-//        else cacheFavourite(product)
-//    }
-//
-//    private suspend fun cacheFavourite(product: Product) {
-//        withContext(Dispatchers.IO) {
-//            // TODO: impl
-//        }
-//    }
-//
-//    private suspend fun clearFavourite(product: Product) {
-//        withContext(Dispatchers.IO) {
-//            // TODO: impl
-//        }
-//    }
-//
-//    suspend fun getFavouriteProducts(): List<Product> {
-//        withContext(Dispatchers.IO) {
-//            // TODO: impl
-//        }
-//    }
-//
-//    suspend fun isFavourite(productId: Int): Boolean {
-//        withContext(Dispatchers.IO) {
-//            // TODO: impl
-//        }
-//    }
-
+        else {
+            favouriteProductsDAO.insertItem(product.toEntity())
+        }
+    }
 }

@@ -4,7 +4,7 @@ import com.example.retailapp.feature.common.data.ProductDto
 
 fun ProductDto.toDomain() : Product =
     Product(
-        id = id,
+        id = id.toString(),
         name = name.orEmpty(),
         description = description.orEmpty(),
         price = price ?: 0F,
