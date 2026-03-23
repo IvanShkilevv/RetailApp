@@ -6,4 +6,5 @@ data class Product(
     val description: String,
     val price: Float,
     val photoUrl: String,
+    val isFavourite: Boolean,
 )
