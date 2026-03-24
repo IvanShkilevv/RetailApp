@@ -19,6 +19,7 @@ class ProductsRepository @Inject constructor(
     suspend fun getProductsPage(skip: Int): List<Product> =
             productsService
                 .getProducts(skip = skip, limit = PAGE_SIZE)
+                .products
                 .map(ProductDto::toDomain)
 
 

@@ -1,5 +1,6 @@
 package com.example.retailapp.feature.products.ui
 
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.retailapp.feature.common.domain.ProductsRepository
 import com.example.retailapp.core.base.BaseViewModel
@@ -43,7 +44,8 @@ class ProductsViewModel @Inject constructor(
                     _screenState.value = ProductsScreenState.DATA
                 }
 
-            }.onFailure {
+            }.onFailure { error ->
+                Log.e("ProductsScreen", "loadProducts:", error)
                 _screenState.value = ProductsScreenState.ERROR
             }
         }
@@ -68,7 +70,8 @@ class ProductsViewModel @Inject constructor(
                     _screenState.value = ProductsScreenState.DATA
                 }
 
-            }.onFailure {
+            }.onFailure { error ->
+                Log.e("ProductsScreen", "loadProducts:", error)
                 _screenState.value = ProductsScreenState.ERROR
             }
         }

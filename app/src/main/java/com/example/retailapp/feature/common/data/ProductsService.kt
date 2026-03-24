@@ -10,7 +10,7 @@ interface ProductsService {
     suspend fun getProducts(
         @Query("skip") skip: Int,
         @Query("limit") limit: Int
-    ): List<ProductDto>
+    ): ProductsResponse
 
     @GET("products/{id}")
     suspend fun getProductDetails(

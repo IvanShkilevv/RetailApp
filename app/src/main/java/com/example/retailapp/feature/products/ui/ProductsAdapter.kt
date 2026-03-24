@@ -40,8 +40,6 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
 
     override fun getItemCount(): Int = items.size
 
-    fun getItem(position: Int) = items.getOrNull(position)
-
     inner class ProductsViewHolder(view: View) : BaseViewHolder<Product>(view) {
         private val binding = ItemProductBinding.bind(view)
 
