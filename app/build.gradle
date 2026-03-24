@@ -44,7 +44,6 @@ android {
     }
 }
 
-// TODO update to newer versions
 dependencies {
 
     def coroutinesVersion = '1.7.3'
