@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextBlack">
+        <item name="android:textColor">@color/main_black</item>
+    </style>
+
+    <style name="TextBlack.Semibold" parent="TextBlack">
+        <item name="android:fontFamily">@font/inter_semibold</item>
+    </style>
+
+    <style name="TextBlack.Medium" parent="TextBlack">
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="TextBlack.Bold" parent="TextBlack">
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="TextBlack.Regular" parent="TextBlack">
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+
+</resources>
