@@ -19,7 +19,7 @@ import com.example.retailapp.feature.common.domain.Product
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
-class ProductDetailsFragment : BaseFragment()  {
+class ProductDetailsFragment : BaseFragment() {
     private lateinit var viewModel: ProductDetailsViewModel
 
     private var _binding: FragmentProductDetailsBinding? = null

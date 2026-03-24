@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="SpUsage"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:ignore="SpUsage">
 
     <include
         android:id="@+id/toolbar"
@@ -14,11 +14,11 @@
         android:id="@+id/favourite_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_margin"
         android:src="@drawable/ic_favorite_off"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/toolbar"
         app:layout_constraintEnd_toEndOf="@id/toolbar"
-        android:layout_marginEnd="@dimen/default_margin"
-        android:visibility="gone"
         app:layout_constraintTop_toTopOf="@id/toolbar" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -64,8 +64,8 @@
                     style="@style/TextBlack.Bold"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_margin_large"
                     android:layout_marginStart="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/default_margin_large"
                     android:layout_marginEnd="@dimen/default_margin"
                     android:ellipsize="end"
                     android:includeFontPadding="false"
@@ -75,8 +75,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/photo_container"
-                    tools:text="400 eur"
-                    />
+                    tools:text="400 eur" />
 
                 <TextView
                     android:id="@+id/name"
@@ -104,14 +103,13 @@
                     android:layout_marginTop="@dimen/default_margin_half"
                     android:layout_marginEnd="@dimen/default_margin"
                     android:ellipsize="end"
-                    android:maxLines="10"
                     android:includeFontPadding="false"
+                    android:maxLines="10"
                     android:textSize="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name"
                     tools:text="Bla bla kjhbsg wiuf hewfiudshf iushf eiuhfewiufh ewiufh ewiufh erg g jgneiug hergiu erhgiu erhg iuerhg eriuh geriug hergi heriu ghergiu herg iuerhg ierhg " />
-
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

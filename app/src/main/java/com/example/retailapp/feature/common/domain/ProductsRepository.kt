@@ -17,10 +17,10 @@ class ProductsRepository @Inject constructor(
 ) {
 
     suspend fun getProductsPage(skip: Int): List<Product> =
-            productsService
-                .getProducts(skip = skip, limit = PAGE_SIZE)
-                .products
-                .map(ProductDto::toDomain)
+        productsService
+            .getProducts(skip = skip, limit = PAGE_SIZE)
+            .products
+            .map(ProductDto::toDomain)
 
 
     suspend fun getProductDetails(id: Int): Product {
@@ -31,8 +31,8 @@ class ProductsRepository @Inject constructor(
     }
 
     fun getFavouriteProducts(): Flow<List<Product>> =
-        favouriteProductsDAO.getAll().map {
-            list -> list.map(FavouriteProductEntity::toDomain)
+        favouriteProductsDAO.getAll().map { list ->
+            list.map(FavouriteProductEntity::toDomain)
         }
 
     suspend fun toggleFavourite(product: Product) {
@@ -40,8 +40,7 @@ class ProductsRepository @Inject constructor(
 
         if (favourite) {
             favouriteProductsDAO.deleteItem(id = product.id)
-        }
-        else {
+        } else {
             favouriteProductsDAO.insertItem(product.toEntity())
         }
     }
