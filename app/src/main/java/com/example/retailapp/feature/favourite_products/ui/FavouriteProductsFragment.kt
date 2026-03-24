@@ -14,7 +14,6 @@ import com.example.retailapp.core.utils.makeVisible
 import com.example.retailapp.core.utils.setVerticalOffsets
 import com.example.retailapp.databinding.FragmentFavouriteProductsBinding
 import com.example.retailapp.feature.common.navigation.Screens
-import com.example.retailapp.feature.common.ui.ProductsAdapter
 import kotlinx.coroutines.launch
 
 class FavouriteProductsFragment : BaseFragment() {
@@ -24,7 +23,7 @@ class FavouriteProductsFragment : BaseFragment() {
     private var _binding: FragmentFavouriteProductsBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var productsAdapter: ProductsAdapter
+    private lateinit var productsAdapter: FavouriteProductsAdapter
 
     companion object {
         fun newInstance(): FavouriteProductsFragment {
@@ -42,7 +41,7 @@ class FavouriteProductsFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        productsAdapter = ProductsAdapter()
+        productsAdapter = FavouriteProductsAdapter()
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
@@ -118,7 +117,7 @@ class FavouriteProductsFragment : BaseFragment() {
             back()
         }
 
-        productsAdapter.itemClickListener = ProductsAdapter.OnItemClickedListener {
+        productsAdapter.itemClickListener = FavouriteProductsAdapter.OnItemClickedListener {
             navigateTo(Screens.productDetails(it.id))
         }
     }

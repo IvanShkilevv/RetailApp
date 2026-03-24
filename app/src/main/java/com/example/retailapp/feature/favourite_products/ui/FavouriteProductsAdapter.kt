@@ -1,17 +1,16 @@
-package com.example.retailapp.feature.common.ui
+package com.example.retailapp.feature.favourite_products.ui
 
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retailapp.R
 import com.example.retailapp.core.base.BaseViewHolder
-import com.example.retailapp.core.utils.addCurrencySign
-import com.example.retailapp.core.utils.drawPhoto
 import com.example.retailapp.databinding.ItemProductBinding
 import com.example.retailapp.feature.common.domain.Product
+import com.example.retailapp.feature.common.ui.fetch
 import java.util.Collections.emptyList
 
-class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>() {
+class FavouriteProductsAdapter : RecyclerView.Adapter<FavouriteProductsAdapter.FavouriteProductsViewHolder>() {
 
     lateinit var itemClickListener: OnItemClickedListener
 
@@ -25,8 +24,8 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
-        return ProductsViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouriteProductsViewHolder {
+        return FavouriteProductsViewHolder(
             BaseViewHolder.createView(
                 parent,
                 R.layout.item_product
@@ -34,13 +33,13 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
         )
     }
 
-    override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FavouriteProductsViewHolder, position: Int) {
         holder.bind(items[position])
     }
 
     override fun getItemCount(): Int = items.size
 
-    inner class ProductsViewHolder(view: View) : BaseViewHolder<Product>(view) {
+    inner class FavouriteProductsViewHolder(view: View) : BaseViewHolder<Product>(view) {
         private val binding = ItemProductBinding.bind(view)
 
         init {
@@ -52,16 +51,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductsViewHolder>
         override fun bind(data: Product) {
             super.bind(data)
 
-            with(binding) {
-                photo.drawPhoto(
-                    photoUrl = data.photoUrl,
-                    context = context,
-                )
-
-                price.text = data.price.addCurrencySign()
-                name.text = data.name
-            }
+            binding.fetch(data)
         }
     }
-
 }

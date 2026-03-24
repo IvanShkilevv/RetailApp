@@ -19,6 +19,7 @@ class FavouriteProductsViewModel @Inject constructor(
     private val _favouriteProducts = MutableStateFlow<List<Product>>(emptyList())
     val favouriteProducts: StateFlow<List<Product>> = _favouriteProducts
 
+//    No pagination needed, according to initial technical specification
     fun observeFavouriteProducts() {
         _screenState.value = FavouriteProductsScreenState.LOADING
 

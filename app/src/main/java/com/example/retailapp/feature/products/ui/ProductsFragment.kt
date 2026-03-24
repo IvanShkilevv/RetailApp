@@ -8,13 +8,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.paging.LoadState
 import com.example.retailapp.R
 import com.example.retailapp.core.base.BaseFragment
 import com.example.retailapp.core.utils.makeGone
 import com.example.retailapp.core.utils.setVerticalOffsets
 import com.example.retailapp.databinding.FragmentProductsBinding
 import com.example.retailapp.feature.common.navigation.Screens
-import com.example.retailapp.feature.common.ui.ProductsAdapter
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class ProductsFragment : BaseFragment() {
@@ -52,8 +53,6 @@ class ProductsFragment : BaseFragment() {
         setupUI()
         setObservers()
         setActionListeners()
-
-        viewModel.loadProducts()
     }
 
     private fun setupUI() {
@@ -74,45 +73,53 @@ class ProductsFragment : BaseFragment() {
     private fun setObservers() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-
                 launch {
-                    viewModel.screenState.collect { renderUiState(it) }
+                    productsAdapter.loadStateFlow.collect { renderUiState(it.refresh) }
                 }
 
                 launch {
-                    viewModel.productsData.collect { list -> productsAdapter.items = list }
+                    viewModel.productsData.collectLatest { productsAdapter.submitData(it) }
                 }
             }
         }
     }
 
-    private fun renderUiState(screenState: ProductsScreenState) {
-        when (screenState) {
-            ProductsScreenState.EMPTY -> {
-                binding.swipeRefresh.isRefreshing = false
-                binding.animatedProgress.showMessage(
-                    getString(R.string.nothing_found),
-                    getString(R.string.try_again_later),
-                )
+    private fun renderUiState(state: LoadState) {
+        when (state) {
+            is LoadState.Loading -> renderLoadingUiState()
+
+            is LoadState.NotLoading -> {
+                val noData = state.endOfPaginationReached && productsAdapter.itemCount == 0
+                if (noData) renderEmptyUiState() else renderDataUiState()
             }
 
-            ProductsScreenState.LOADING -> {
-                binding.animatedProgress.showProgress(true)
-            }
-
-            ProductsScreenState.DATA -> {
-                binding.animatedProgress.hide()
-                binding.swipeRefresh.isRefreshing = false
-            }
-
-            ProductsScreenState.ERROR -> {
-                binding.swipeRefresh.isRefreshing = false
-                binding.animatedProgress.showMessage(
-                    getString(R.string.something_went_wrong),
-                    getString(R.string.try_again_later),
-                )
-            }
+            is LoadState.Error -> renderErrorUiState()
         }
+    }
+
+    private fun renderLoadingUiState() {
+        binding.animatedProgress.showProgress(true)
+    }
+
+    private fun renderEmptyUiState() {
+        binding.swipeRefresh.isRefreshing = false
+        binding.animatedProgress.showMessage(
+            getString(R.string.nothing_found),
+            getString(R.string.try_again_later),
+        )
+    }
+
+    private fun renderDataUiState() {
+        binding.swipeRefresh.isRefreshing = false
+        binding.animatedProgress.hide()
+    }
+
+    private fun renderErrorUiState() {
+        binding.swipeRefresh.isRefreshing = false
+        binding.animatedProgress.showMessage(
+            getString(R.string.something_went_wrong),
+            getString(R.string.try_again_later),
+        )
     }
 
     private fun setActionListeners() {
@@ -121,7 +128,7 @@ class ProductsFragment : BaseFragment() {
         }
 
         binding.swipeRefresh.setOnRefreshListener {
-            viewModel.refresh()
+            productsAdapter.refresh()
         }
 
         productsAdapter.itemClickListener = ProductsAdapter.OnItemClickedListener {
