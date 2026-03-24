@@ -2,7 +2,6 @@ package com.example.retailapp.feature.common.data
 
 import com.google.gson.annotations.SerializedName
 
-// TODO: add recommendations for README: 1) id as String 2) price as Int
 data class ProductDto(
     val id: Int,
     @SerializedName("title")

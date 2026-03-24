@@ -9,6 +9,7 @@ fun ProductDto.toDomain() : Product =
         description = description.orEmpty(),
         price = price ?: 0F,
         photoUrl = photoUrl.orEmpty(),
-        // TODO: Comment. Single domain model is a better approach, then creating duplicate domain model (FavouriteProduct)
+        // Set to false, can be fetched later.
+        // Still, single domain model (Product) is a better approach, then creating duplicate domain model (FavouriteProduct)
         isFavourite = false,
     )
