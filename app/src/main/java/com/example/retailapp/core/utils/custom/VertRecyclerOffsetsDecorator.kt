@@ -1,6 +1,5 @@
 package com.example.retailapp.core.utils.custom
 
-import android.content.Context
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView.ItemDecoration
  * Use with layout attributes "app:bottomItemOffset", "app:middleItemOffset", "app:topItemOffset"
  */
 class VertRecyclerOffsetsDecorator(
-    context: Context?,
     bottomMarginInPx: Float,
     middleMarginInPx: Float,
     topMarginInPx: Float

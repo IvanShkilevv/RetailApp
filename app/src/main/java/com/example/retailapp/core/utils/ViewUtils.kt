@@ -13,14 +13,6 @@ fun View.makeVisible() {
     this.visibility = VISIBLE
 }
 
-fun View.visibleIf(condition: Boolean) {
-    this.visibility = if (condition) VISIBLE else GONE
-}
-
-fun View.goneIf(condition: Boolean) {
-    this.visibility = if (condition) GONE else VISIBLE
-}
-
 /**
  * Use for vertical recyclerView decoration
  */
@@ -31,7 +23,6 @@ fun RecyclerView.setVerticalOffsets(
 ) {
     this.addItemDecoration(
         VertRecyclerOffsetsDecorator(
-            this.context,
             bottomMarginInPx.toFloat(),
             middleMarginInPx.toFloat(),
             topMarginInPx.toFloat()

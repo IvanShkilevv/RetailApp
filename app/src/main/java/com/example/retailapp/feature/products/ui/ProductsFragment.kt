@@ -15,6 +15,7 @@ import com.example.retailapp.core.utils.makeGone
 import com.example.retailapp.core.utils.setVerticalOffsets
 import com.example.retailapp.databinding.FragmentProductsBinding
 import com.example.retailapp.feature.common.navigation.Screens
+import com.example.retailapp.feature.products.ui.paging.ProductsPagingAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -25,7 +26,7 @@ class ProductsFragment : BaseFragment() {
     private var _binding: FragmentProductsBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var productsAdapter: ProductsAdapter
+    private lateinit var productsAdapter: ProductsPagingAdapter
 
     companion object {
         fun newInstance(): ProductsFragment {
@@ -43,7 +44,7 @@ class ProductsFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        productsAdapter = ProductsAdapter()
+        productsAdapter = ProductsPagingAdapter()
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
@@ -131,7 +132,7 @@ class ProductsFragment : BaseFragment() {
             productsAdapter.refresh()
         }
 
-        productsAdapter.itemClickListener = ProductsAdapter.OnItemClickedListener {
+        productsAdapter.itemClickListener = ProductsPagingAdapter.OnItemClickedListener {
             navigateTo(Screens.productDetails(it.id))
         }
     }

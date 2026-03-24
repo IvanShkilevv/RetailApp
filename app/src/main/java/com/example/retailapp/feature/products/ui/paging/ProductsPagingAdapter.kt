@@ -1,4 +1,4 @@
-package com.example.retailapp.feature.products.ui
+package com.example.retailapp.feature.products.ui.paging
 
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +10,8 @@ import com.example.retailapp.databinding.ItemProductBinding
 import com.example.retailapp.feature.common.domain.Product
 import com.example.retailapp.feature.common.ui.fetch
 
-class ProductsAdapter :
-    PagingDataAdapter<Product, ProductsAdapter.ProductsViewHolder>(DIFF) {
+class ProductsPagingAdapter :
+    PagingDataAdapter<Product, ProductsPagingAdapter.ProductsViewHolder>(DIFF) {
 
     lateinit var itemClickListener: OnItemClickedListener
 

@@ -51,7 +51,6 @@ class EmptyProgressView: FrameLayout {
     fun showMessage(
         message: String? = null,
         secondMessage: String? = null,
-        @DrawableRes image: Int? = null
     ) {
         visibility = VISIBLE
         this.message.apply {

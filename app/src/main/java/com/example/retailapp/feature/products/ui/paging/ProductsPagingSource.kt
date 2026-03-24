@@ -1,4 +1,4 @@
-package com.example.retailapp.feature.products.ui
+package com.example.retailapp.feature.products.ui.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
