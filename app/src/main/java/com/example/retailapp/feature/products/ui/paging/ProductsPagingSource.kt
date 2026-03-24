@@ -33,7 +33,5 @@ class ProductsPagingSource(
         }
     }
 
-    override fun getRefreshKey(state: PagingState<Int, Product>): Int? {
-        return state.anchorPosition
-    }
+    override fun getRefreshKey(state: PagingState<Int, Product>): Int? = null
 }
