@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--todo clear unused-->
-
     <dimen name="default_margin_quarter">5dp</dimen>
     <dimen name="default_margin">20dp</dimen>
     <dimen name="default_margin_large">30dp</dimen>
     <dimen name="default_margin_half">10dp</dimen>
-    <dimen name="standart_margin">15dp</dimen>
 
-    <dimen name="radius_small">10dp</dimen>
-    <dimen name="radius_little">15dp</dimen>
-    <dimen name="radius_normal">20dp</dimen>
-    <dimen name="radius_medium">25dp</dimen>
     <dimen name="radius_large">30dp</dimen>
     <dimen name="radius_extra_large">40dp</dimen>
 
