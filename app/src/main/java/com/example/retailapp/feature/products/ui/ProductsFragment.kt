@@ -61,8 +61,6 @@ class ProductsFragment : BaseFragment() {
     }
 
     private fun setupUI() {
-        drawStatusBarTopPadding(binding.root)
-
         binding.toolbar.title.setText(R.string.products_title)
         binding.toolbar.back.makeGone()
 
@@ -95,6 +93,7 @@ class ProductsFragment : BaseFragment() {
     private fun renderUiState(screenState: ProductsScreenState) {
         when(screenState) {
             ProductsScreenState.EMPTY -> {
+                binding.swipeRefresh.isRefreshing = false
                 binding.animatedProgress.showMessage(
                     getString(R.string.nothing_found),
                     getString(R.string.try_again_later),
@@ -105,8 +104,10 @@ class ProductsFragment : BaseFragment() {
             }
             ProductsScreenState.DATA -> {
                 binding.animatedProgress.hide()
+                binding.swipeRefresh.isRefreshing = false
             }
             ProductsScreenState.ERROR -> {
+                binding.swipeRefresh.isRefreshing = false
                 binding.animatedProgress.showMessage(
                     getString(R.string.something_went_wrong),
                     getString(R.string.try_again_later),

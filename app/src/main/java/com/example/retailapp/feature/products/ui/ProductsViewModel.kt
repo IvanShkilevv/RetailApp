@@ -2,17 +2,16 @@ package com.example.retailapp.feature.products.ui
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
+import com.example.retailapp.app.Constants.API_TEST_DELAY_MILLIS
 import com.example.retailapp.feature.common.domain.ProductsRepository
 import com.example.retailapp.core.base.BaseViewModel
 import com.example.retailapp.core.utils.runSuspendCatching
 import com.example.retailapp.feature.common.domain.Product
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
-// TODO:  delay  for a better testing PullToRefresh and ProgressIndicator
-//            delay(1000)
 
 class ProductsViewModel @Inject constructor(
     private val productsRepository: ProductsRepository
@@ -27,10 +26,11 @@ class ProductsViewModel @Inject constructor(
 
     private var skip = 0
 
-
     fun loadProducts() {
         viewModelScope.launch {
             _screenState.value = ProductsScreenState.LOADING
+//          Delay for a better testing of SwipeRefresh and Progress
+            delay(API_TEST_DELAY_MILLIS)
 
             runSuspendCatching {
                 productsRepository.getProductsPage(skip)
@@ -57,6 +57,8 @@ class ProductsViewModel @Inject constructor(
             skip = 0
             _productsData.value = emptyList()
             _screenState.value = ProductsScreenState.LOADING
+//          Delay for a better testing of SwipeRefresh and Progress
+            delay(API_TEST_DELAY_MILLIS)
 
             runSuspendCatching {
                 productsRepository.getProductsPage(skip)

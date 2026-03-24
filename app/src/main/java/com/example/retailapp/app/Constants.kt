@@ -8,4 +8,5 @@ object Constants {
     const val BASE_API_URL = "https://dummyjson.com/"
     const val DATABASE_NAME = "retailapp.db"
     const val DATABASE_VERSION = 1
+    const val API_TEST_DELAY_MILLIS = 1000L
 }

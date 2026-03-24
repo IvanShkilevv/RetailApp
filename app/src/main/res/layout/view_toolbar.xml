@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/title"
-        style="@style/TextBlack.Semibold"
+        style="@style/TextBlack.Medium"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAlignment="center"
