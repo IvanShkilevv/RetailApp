@@ -90,8 +90,8 @@ class FavouriteProductsFragment : BaseFragment() {
         when (screenState) {
             FavouriteProductsScreenState.EMPTY -> {
                 binding.animatedProgress.showMessage(
-                    getString(R.string.nothing_found),
-                    getString(R.string.try_again_later),
+                    getString(R.string.empty_favourites),
+                    getString(R.string.add_favourites),
                 )
             }
 

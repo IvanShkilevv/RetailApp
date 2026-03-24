@@ -6,4 +6,7 @@
     <string name="nothing_found">Nothing found</string>
     <string name="try_again_later">Please try again later</string>
     <string name="something_went_wrong">Something went wrong</string>
+    <string name="empty_favourites">No favourite products</string>
+    <string name="add_favourites">Go to the product details screen and select the product as favourite</string>
+
 </resources>

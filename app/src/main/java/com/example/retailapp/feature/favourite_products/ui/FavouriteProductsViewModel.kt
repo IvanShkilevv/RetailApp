@@ -26,8 +26,12 @@ class FavouriteProductsViewModel @Inject constructor(
         viewModelScope.launch {
             productsRepository.getFavouriteProducts()
                 .collect { products ->
-                    _favouriteProducts.value = products
-                    _screenState.value = FavouriteProductsScreenState.DATA
+                    if (products.isNotEmpty()) {
+                        _favouriteProducts.value = products
+                        _screenState.value = FavouriteProductsScreenState.DATA
+                    } else {
+                        _screenState.value = FavouriteProductsScreenState.EMPTY
+                    }
                 }
         }
     }
