@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.retailapp.R
 import com.example.retailapp.core.base.BaseFragment
-import com.example.retailapp.core.utils.makeGone
 import com.example.retailapp.core.utils.makeVisible
 import com.example.retailapp.core.utils.setVerticalOffsets
 import com.example.retailapp.databinding.FragmentFavouriteProductsBinding

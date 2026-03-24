@@ -31,9 +31,11 @@ class ProductsRepository @Inject constructor(
     }
 
     fun getFavouriteProducts(): Flow<List<Product>> =
-        favouriteProductsDAO.getAll().map { list ->
-            list.map(FavouriteProductEntity::toDomain)
-        }
+        favouriteProductsDAO
+            .getAll()
+            .map { list ->
+                list.map(FavouriteProductEntity::toDomain)
+            }
 
     suspend fun toggleFavourite(product: Product) {
         val favourite = favouriteProductsDAO.isFavourite(product.id)
