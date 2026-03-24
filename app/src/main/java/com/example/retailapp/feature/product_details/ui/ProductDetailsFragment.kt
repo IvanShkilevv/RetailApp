@@ -13,6 +13,7 @@ import com.example.retailapp.R
 import com.example.retailapp.core.base.BaseFragment
 import com.example.retailapp.core.utils.addCurrencySign
 import com.example.retailapp.core.utils.drawPhoto
+import com.example.retailapp.core.utils.makeGone
 import com.example.retailapp.core.utils.makeVisible
 import com.example.retailapp.databinding.FragmentProductDetailsBinding
 import com.example.retailapp.feature.common.domain.Product
@@ -84,6 +85,7 @@ class ProductDetailsFragment : BaseFragment() {
         when (screenState) {
             ProductDetailsScreenState.EMPTY -> {
                 binding.swipeRefresh.isRefreshing = false
+                binding.favouriteIcon.makeGone()
                 binding.animatedProgress.showMessage(
                     getString(R.string.nothing_found),
                     getString(R.string.try_again_later),
@@ -92,6 +94,7 @@ class ProductDetailsFragment : BaseFragment() {
 
             ProductDetailsScreenState.LOADING -> {
                 binding.animatedProgress.showProgress(true)
+                binding.favouriteIcon.makeGone()
             }
 
             ProductDetailsScreenState.DATA -> {
@@ -102,6 +105,7 @@ class ProductDetailsFragment : BaseFragment() {
 
             ProductDetailsScreenState.ERROR -> {
                 binding.swipeRefresh.isRefreshing = false
+                binding.favouriteIcon.makeGone()
                 binding.animatedProgress.showMessage(
                     getString(R.string.something_went_wrong),
                     getString(R.string.try_again_later),
