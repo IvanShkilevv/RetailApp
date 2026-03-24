@@ -29,7 +29,8 @@ class ProductsViewModel @Inject constructor(
     fun loadProducts() {
         viewModelScope.launch {
             _screenState.value = ProductsScreenState.LOADING
-//          Delay for a better testing of SwipeRefresh and Progress
+            /* Delay for a better testing of SwipeRefresh and Progress.
+            In a real project better to use if(BuildConfig.DEBUG = true) {delay()}*/
             delay(API_TEST_DELAY_MILLIS)
 
             runSuspendCatching {
@@ -57,7 +58,9 @@ class ProductsViewModel @Inject constructor(
             skip = 0
             _productsData.value = emptyList()
             _screenState.value = ProductsScreenState.LOADING
-//          Delay for a better testing of SwipeRefresh and Progress
+
+            /* Delay for a better testing of SwipeRefresh and Progress.
+            In a real project better to use if(BuildConfig.DEBUG = true) {delay()}*/
             delay(API_TEST_DELAY_MILLIS)
 
             runSuspendCatching {
