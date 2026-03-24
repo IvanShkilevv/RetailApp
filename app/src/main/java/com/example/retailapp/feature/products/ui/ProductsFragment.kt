@@ -124,6 +124,10 @@ class ProductsFragment : BaseFragment() {
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.refresh()
         }
+
+        binding.actionIcon.setOnClickListener {
+            // TODO: navigate to Favourites
+        }
     }
 
     override fun onDestroyView() {
