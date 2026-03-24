@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">RetailApp</string>
     <string name="products_title">Products</string>
+    <string name="product_details">Product details</string>
     <string name="favourites_title">Favourites</string>
     <string name="nothing_found">Nothing found</string>
     <string name="try_again_later">Please try again later</string>

@@ -13,6 +13,7 @@ import com.example.retailapp.core.base.BaseFragment
 import com.example.retailapp.core.utils.makeGone
 import com.example.retailapp.core.utils.setVerticalOffsets
 import com.example.retailapp.databinding.FragmentProductsBinding
+import com.example.retailapp.feature.common.navigation.Screens
 import kotlinx.coroutines.launch
 
 class ProductsFragment : BaseFragment() {
@@ -118,8 +119,7 @@ class ProductsFragment : BaseFragment() {
 
     private fun setActionListeners() {
         productsAdapter.itemClickListener = ProductsAdapter.OnItemClickedListener {
-            // TODO: uncomment
-//            navigateTo(Screens.productDetails(it.id))
+            navigateTo(Screens.productDetails(it.id))
         }
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.refresh()

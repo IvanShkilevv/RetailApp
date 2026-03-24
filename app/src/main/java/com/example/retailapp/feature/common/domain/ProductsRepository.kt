@@ -35,9 +35,6 @@ class ProductsRepository @Inject constructor(
             list -> list.map(FavouriteProductEntity::toDomain)
         }
 
-    suspend fun isFavourite(productId: String): Boolean =
-        favouriteProductsDAO.isFavourite(id = productId)
-
     suspend fun toggleFavourite(product: Product) {
         val favourite = favouriteProductsDAO.isFavourite(product.id)
 

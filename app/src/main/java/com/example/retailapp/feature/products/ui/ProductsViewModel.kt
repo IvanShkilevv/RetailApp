@@ -24,6 +24,7 @@ class ProductsViewModel @Inject constructor(
     private val _screenState = MutableStateFlow(ProductsScreenState.EMPTY)
     val screenState: StateFlow<ProductsScreenState> = _screenState
 
+    // TODO: remove
     private var skip = 0
 
     fun loadProducts() {
@@ -42,6 +43,7 @@ class ProductsViewModel @Inject constructor(
                 } else {
                     _productsData.value = _productsData.value + page
                     skip += page.size
+
                     _screenState.value = ProductsScreenState.DATA
                 }
 
@@ -51,7 +53,6 @@ class ProductsViewModel @Inject constructor(
             }
         }
     }
-
 
     fun refresh() {
         viewModelScope.launch {

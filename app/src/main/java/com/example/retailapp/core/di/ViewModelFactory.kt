@@ -2,6 +2,7 @@ package com.example.retailapp.core.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.retailapp.feature.product_details.ui.ProductDetailsViewModel
 import com.example.retailapp.feature.products.ui.ProductsViewModel
 
 import dagger.Binds
@@ -42,11 +43,10 @@ abstract class ViewModelModule {
     @ViewModelKey(ProductsViewModel::class)
     internal abstract fun productsViewModel(viewModel: ProductsViewModel): ViewModel
 
-// TODO: uncomment
-//    @Binds
-//    @IntoMap
-//    @ViewModelKey(UserDetailsViewModel::class)
-//    internal abstract fun productDetailsViewModel(viewModel: UserDetailsViewModel): ViewModel
+    @Binds
+    @IntoMap
+    @ViewModelKey(ProductDetailsViewModel::class)
+    internal abstract fun productDetailsViewModel(viewModel: ProductDetailsViewModel): ViewModel
 
     // TODO: uncomment
 //    @Binds
