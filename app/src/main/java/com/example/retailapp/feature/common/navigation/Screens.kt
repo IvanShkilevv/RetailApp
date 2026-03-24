@@ -1,5 +1,6 @@
 package com.example.retailapp.feature.common.navigation
 
+import com.example.retailapp.feature.favourite_products.ui.FavouriteProductsFragment
 import com.example.retailapp.feature.product_details.ui.ProductDetailsFragment
 import com.example.retailapp.feature.products.ui.ProductsFragment
 import com.github.terrakok.cicerone.androidx.FragmentScreen
@@ -10,14 +11,11 @@ object Screens {
         ProductsFragment.newInstance()
     }
 
-
     fun productDetails(id: String) = FragmentScreen {
         ProductDetailsFragment.newInstance(id)
     }
 
-    // TODO: uncomment
-//    fun favouriteProducts() = FragmentScreen {
-//        FavouriteProductsFragment.newInstance()
-//    }
-
+    fun favouriteProducts() = FragmentScreen {
+        FavouriteProductsFragment.newInstance()
+    }
 }

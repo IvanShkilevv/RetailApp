@@ -2,6 +2,7 @@ package com.example.retailapp.core.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.retailapp.feature.favourite_products.ui.FavouriteProductsViewModel
 import com.example.retailapp.feature.product_details.ui.ProductDetailsViewModel
 import com.example.retailapp.feature.products.ui.ProductsViewModel
 
@@ -48,10 +49,9 @@ abstract class ViewModelModule {
     @ViewModelKey(ProductDetailsViewModel::class)
     internal abstract fun productDetailsViewModel(viewModel: ProductDetailsViewModel): ViewModel
 
-    // TODO: uncomment
-//    @Binds
-//    @IntoMap
-//    @ViewModelKey(FavouriteProductsViewModel::class)
-//    internal abstract fun favouriteProductsViewModel(viewModel: FavouriteProductsViewModel): ViewModel
+    @Binds
+    @IntoMap
+    @ViewModelKey(FavouriteProductsViewModel::class)
+    internal abstract fun favouriteProductsViewModel(viewModel: FavouriteProductsViewModel): ViewModel
 
 }

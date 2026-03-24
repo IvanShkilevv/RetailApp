@@ -1,4 +1,4 @@
-package com.example.retailapp.feature.products.ui
+package com.example.retailapp.feature.common.ui
 
 import android.view.View
 import android.view.ViewGroup

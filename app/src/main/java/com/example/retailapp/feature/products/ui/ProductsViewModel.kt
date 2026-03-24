@@ -17,8 +17,7 @@ class ProductsViewModel @Inject constructor(
     private val productsRepository: ProductsRepository
 ) : BaseViewModel() {
 
-    private val _productsData =
-        MutableStateFlow<List<Product>>(emptyList())
+    private val _productsData = MutableStateFlow<List<Product>>(emptyList())
     val productsData: StateFlow<List<Product>> = _productsData
 
     private val _screenState = MutableStateFlow(ProductsScreenState.EMPTY)

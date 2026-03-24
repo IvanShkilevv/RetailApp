@@ -1,4 +1,4 @@
-package com.example.retailapp.feature.products.ui
+package com.example.retailapp.feature.favourite_products.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,29 +11,30 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.retailapp.R
 import com.example.retailapp.core.base.BaseFragment
 import com.example.retailapp.core.utils.makeGone
+import com.example.retailapp.core.utils.makeVisible
 import com.example.retailapp.core.utils.setVerticalOffsets
-import com.example.retailapp.databinding.FragmentProductsBinding
+import com.example.retailapp.databinding.FragmentFavouriteProductsBinding
 import com.example.retailapp.feature.common.navigation.Screens
 import com.example.retailapp.feature.common.ui.ProductsAdapter
 import kotlinx.coroutines.launch
 
-class ProductsFragment : BaseFragment() {
+class FavouriteProductsFragment : BaseFragment() {
 
-    private lateinit var viewModel: ProductsViewModel
+    private lateinit var viewModel: FavouriteProductsViewModel
 
-    private var _binding: FragmentProductsBinding? = null
+    private var _binding: FragmentFavouriteProductsBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var productsAdapter: ProductsAdapter
 
     companion object {
-        fun newInstance(): ProductsFragment {
-            return ProductsFragment()
+        fun newInstance(): FavouriteProductsFragment {
+            return FavouriteProductsFragment()
         }
     }
 
     override fun getRootView(inflater: LayoutInflater, container: ViewGroup?): View {
-        _binding = FragmentProductsBinding.inflate(inflater, container, false)
+        _binding = FragmentFavouriteProductsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -48,17 +49,18 @@ class ProductsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this, viewModelFactory)[ProductsViewModel::class.java]
+        viewModel =
+            ViewModelProvider(this, viewModelFactory)[FavouriteProductsViewModel::class.java]
         setupUI()
         setObservers()
         setActionListeners()
 
-        viewModel.loadProducts()
+        viewModel.observeFavouriteProducts()
     }
 
     private fun setupUI() {
-        binding.toolbar.title.setText(R.string.products_title)
-        binding.toolbar.back.makeGone()
+        binding.toolbar.title.setText(R.string.favourites_title)
+        binding.toolbar.back.makeVisible()
 
         binding.recycler.apply {
             adapter = productsAdapter
@@ -80,33 +82,30 @@ class ProductsFragment : BaseFragment() {
                 }
 
                 launch {
-                    viewModel.productsData.collect { list -> productsAdapter.items = list }
+                    viewModel.favouriteProducts.collect { list -> productsAdapter.items = list }
                 }
             }
         }
     }
 
-    private fun renderUiState(screenState: ProductsScreenState) {
+    private fun renderUiState(screenState: FavouriteProductsScreenState) {
         when (screenState) {
-            ProductsScreenState.EMPTY -> {
-                binding.swipeRefresh.isRefreshing = false
+            FavouriteProductsScreenState.EMPTY -> {
                 binding.animatedProgress.showMessage(
                     getString(R.string.nothing_found),
                     getString(R.string.try_again_later),
                 )
             }
 
-            ProductsScreenState.LOADING -> {
+            FavouriteProductsScreenState.LOADING -> {
                 binding.animatedProgress.showProgress(true)
             }
 
-            ProductsScreenState.DATA -> {
+            FavouriteProductsScreenState.DATA -> {
                 binding.animatedProgress.hide()
-                binding.swipeRefresh.isRefreshing = false
             }
 
-            ProductsScreenState.ERROR -> {
-                binding.swipeRefresh.isRefreshing = false
+            FavouriteProductsScreenState.ERROR -> {
                 binding.animatedProgress.showMessage(
                     getString(R.string.something_went_wrong),
                     getString(R.string.try_again_later),
@@ -116,12 +115,8 @@ class ProductsFragment : BaseFragment() {
     }
 
     private fun setActionListeners() {
-        binding.actionIcon.setOnClickListener {
-            navigateTo(Screens.favouriteProducts())
-        }
-
-        binding.swipeRefresh.setOnRefreshListener {
-            viewModel.refresh()
+        binding.toolbar.back.setOnClickListener {
+            back()
         }
 
         productsAdapter.itemClickListener = ProductsAdapter.OnItemClickedListener {
