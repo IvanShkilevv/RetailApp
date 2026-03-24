@@ -1,7 +1,5 @@
 package com.example.retailapp.core.utils
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.view.View
 import android.view.View.*
 import androidx.recyclerview.widget.RecyclerView
@@ -39,26 +37,4 @@ fun RecyclerView.setVerticalOffsets(
             topMarginInPx.toFloat()
         )
     )
-}
-
-fun drawStatusBarTopPadding(root: View) {
-    root.apply {
-        setPadding(
-            paddingLeft,
-            getStatusBarHeight(root.context),
-            paddingLeft,
-            paddingBottom
-        )
-    }
-}
-
-@SuppressLint("InternalInsetResource")
-fun getStatusBarHeight(context: Context): Int {
-    var result = 0
-    val resourceId =
-        context.resources.getIdentifier("status_bar_height", "dimen", "android")
-    if (resourceId > 0) {
-        result = context.resources.getDimensionPixelSize(resourceId)
-    }
-    return result
 }
